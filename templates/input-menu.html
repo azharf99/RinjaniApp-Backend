@@ -1,0 +1,224 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+
+    <!-- Modal Data Umum-->
+    <div class="modal fade" id="dataUmum" tabindex="-1" aria-labelledby="dataUmumLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="dataUmumLabel">Input Data Umum</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form action="{% url 'general' %}" method="post">
+                {% csrf_token %}
+                <div class="container">
+                    {% for field in form_general %}
+                        <div class="d-flex justify-content-between mt-2 mb-2">
+                            {{ field.errors }}
+                            {{ field.label_tag }}
+                            {{ field }}
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="container d-flex justify-content-center mt-3 mb-1">
+                    <input class="btn btn-success" type="submit" value="Submit">
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Data Makan-->
+    <div class="modal fade" id="dataMakan" tabindex="-1" aria-labelledby="dataMakanLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="dataMakanLabel">Input Data Makan</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form action="{% url 'food' %}" method="post">
+                {% csrf_token %}
+                <div class="container">
+                    {% for field in form_food %}
+                        <div class="d-flex justify-content-between mt-2 mb-2">
+                            {{ field.errors }}
+                            {{ field.label_tag }}
+                            {{ field }}
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="container d-flex justify-content-center mt-3 mb-1">
+                    <input class="btn btn-success" type="submit" value="Submit">
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Data Menyusui-->
+    <div class="modal fade" id="dataNyusu" tabindex="-1" aria-labelledby="dataNyusuLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="dataNyusuLabel">Input Data Menyusui</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form action="{% url 'breast' %}" method="post">
+                {% csrf_token %}
+                <div class="container">
+                    {% for field in form_breast %}
+                        <div class="d-flex justify-content-between mt-2 mb-2">
+                            {{ field.errors }}
+                            {{ field.label_tag }}
+                            {{ field }}
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="container d-flex justify-content-center mt-3 mb-1">
+                    <input class="btn btn-success" type="submit" value="Submit">
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Data Tidur-->
+    <div class="modal fade" id="dataTidur" tabindex="-1" aria-labelledby="dataTidurLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="dataTidurLabel">Input Data Tidur</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form action="{% url 'sleep' %}" method="post">
+                {% csrf_token %}
+                <div class="container">
+                    {% for field in form_sleep %}
+                        <div class="d-flex justify-content-between mt-2 mb-2">
+                            {{ field.errors }}
+                            {{ field.label_tag }}
+                            {{ field }}
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="container d-flex justify-content-center mt-3 mb-1">
+                    <input class="btn btn-success" type="submit" value="Submit">
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Data Diaper-->
+    <div class="modal fade" id="dataPopok" tabindex="-1" aria-labelledby="dataPopokLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="dataPopokLabel">Input Data Popok</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form action="{% url 'diaper' %}" method="post">
+                {% csrf_token %}
+                <div class="container">
+                    {% for field in form_diaper %}
+                        <div class="d-flex justify-content-between mt-2 mb-2">
+                            {{ field.errors }}
+                            {{ field.label_tag }}
+                            {{ field }}
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="container d-flex justify-content-center mt-3 mb-1">
+                    <input class="btn btn-success" type="submit" value="Submit">
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Data Kesehatan-->
+    <div class="modal fade" id="dataObat" tabindex="-1" aria-labelledby="dataObatLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="dataObatLabel">Input Data Kesehatan</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form action="{% url 'medicine' %}" method="post">
+                {% csrf_token %}
+                <div class="container">
+                    {% for field in form_medicine %}
+                        <div class="d-flex justify-content-between mt-2 mb-2">
+                            {{ field.errors }}
+                            {{ field.label_tag }}
+                            {{ field }}
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="container d-flex justify-content-center mt-3 mb-1">
+                    <input class="btn btn-success" type="submit" value="Submit">
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Tombol Input Data  -->
+    <div class="container text-center mt-5 pt-5">
+        <h1 class="m-4">Data mana yang mau <span class="text-info fw-bold">diisi?</span> <i class="bi bi-emoji-wink"></i></h1>
+        <div class="d-flex flex-wrap justify-content-center">
+        <div class="m-2 d-inline-block">
+            <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#dataUmum">
+                <img src="{% static 'img/general.png' %}" alt="General" width="70px">
+                <p>Umum</p>
+            </button>
+        </div>
+        <div class="m-2 d-inline-block">
+            <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#dataMakan">
+                <img src="{% static 'img/food.png' %}" alt="" width="70px">
+                <p>Makanan</p>
+            </button>
+        </div>
+        <div class="m-2 d-inline-block">
+            <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#dataNyusu">
+                <img src="{% static 'img/breast.png' %}" alt="" width="70px">
+                <p>Menyusui</p>
+            </button>
+        </div>
+        <div class="m-2 d-inline-block">
+            <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#dataTidur">
+                <img src="{% static 'img/sleep.png' %}" alt=""  width="70px">
+                <p>Tidur</p>
+            </button>
+        </div>
+        <div class="m-2 d-inline-block">
+            <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#dataPopok">
+                <img src="{% static 'img/diaper.png' %}" alt="" width="70px">
+                <p>Popok</p>
+            </button>
+        </div>
+        <div class="m-2 d-inline-block">
+            <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#dataObat">
+                <img src="{% static 'img/medicine.png' %}" alt="" width="70px">
+                <p>Kesehatan</p>
+            </button>
+        </div>
+
+        </div>
+    </div>
+
+
+    {% include 'nav-long.html' %}
+
+{% endblock %}

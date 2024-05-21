@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% include 'menu.html' %}
+
+    <!-- Tabel -->
+    <div class="container mt-3 mb-5">
+
+    <p class="text-center">Data Mandi Rinjani</p>
+
+    <table class="table table-hover table-responsive align-middle">
+        <thead class="table-dark">
+        <tr>
+            <th>Tanggal</th>
+            <th>Waktu (WIB)</th>
+            <th>Mandi</th>
+            <th>Detail</th>
+        </tr>
+        </thead>
+    {% if datas %}
+    {% for data in datas %}
+        <tbody>
+        <tr>
+            <td>{{ data.tanggal|date:'j M Y' }}</td>
+            <td>{{ data.waktu|date:'G:i' }}</td>
+            <td>{{ data.mandi }}</td>
+            <td><a class="btn btn-outline-primary btn-sm" href="{% url 'hygiene-detail' data.id %}"><i class="bi bi-list"></i></a></td>
+    {% endfor %}
+        </tr>
+    {% endif %}
+        </tbody>
+    </table>
+    </div>
+
+    <!-- Modal Input Data -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header bg-info">
+            <h5 class="modal-title" id="exampleModalLabel">Input Data</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body d-flex flex-column">
+            <form action="{% url 'hygiene' %}" method="post">
+                {% csrf_token %}
+                <div class="container">
+                    {% for field in form %}
+                        <div class="d-flex justify-content-between mt-2 mb-2">
+                            {{ field.errors }}
+                            {{ field.label_tag }}
+                            {{ field }}
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="container d-flex justify-content-center mt-3 mb-1">
+                    <input class="btn btn-success" type="submit" value="Submit">
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

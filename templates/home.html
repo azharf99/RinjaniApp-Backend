@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% load static %}
+
+    <div class="container d-flex align-items-center justify-content-center vh-100 flex-column">
+        <div>
+            <img class="rinjani" src="{% static 'img/rinjani.png' %}" alt="Anakku" loading="lazy" id="rinjani">
+        </div>
+        <div class="text-center">
+            <h1>Selamat Datang!</h1>
+            <p>Aplikasi untuk mencatat seluruh aktivitas dan perkembangan yang terjadi pada anak cantik Rinjani Ruby Mandalawangi</p>
+        </div>
+        <div class="d-flex gap-2 text-center">
+            <a class="btn btn-primary bg-gradient shadow" href="{% url 'input-data' %}">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20px">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
+                </svg>
+                <p>Input Data</p>
+            </a>
+            <a class="btn btn-warning bg-gradient shadow" href="{% url 'edit-data' %}">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20px">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+                  </svg>                  
+                <p><span class="text-dark fw-bold">Ubah</span>/<span class="text-danger fw-bold">Hapus</span></p>
+            </a>
+            <a class="btn btn-success bg-gradient shadow" href="{% url 'show-data' %}">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" width="20px">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                  </svg>
+                <p>Lihat per Tgl</p>
+            </a>
+        </div>
+    </div>
+
+
+
+    {% include 'nav-long.html' %}
+
+{% endblock %}

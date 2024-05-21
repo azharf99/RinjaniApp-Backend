@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container w-75">
+    <div>
+        <h1 class="m-3 text-center">Edit Data</h1>
+    </div>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="d-grid gap-2">
+            {{ form.as_table }}
+            <input class="btn mb-5 btn-success" type="submit" value="Edit Data">
+        </div>
+        </form>
+</div>
+
+<div class="text-center mb-5 p-5">
+    <p>udah cukup scrollnya :)</p>
+</div>
+{% include 'nav-short.html' %}
+
+{% endblock %}

@@ -1,0 +1,35 @@
+from django.urls import path
+from activity.legacy_view import *
+
+
+urlpatterns = [
+    path('', index, name="home"),
+    path('input/', input_data, name="input-data"),
+    path('edit/', edit_data, name="edit-data"),
+    path('delete/', delete_data, name="delete-data"),
+    path('general/', general, name="general"),
+    path('general/<int:pk>', general_detail, name="general-detail"),
+    path('general/edit/<int:pk>', general_edit, name="general-edit"),
+    path('general/delete/<int:pk>', general_delete, name="general-delete"),
+    path('food/', food, name="food"),
+    path('food/<int:pk>', food_detail, name="food-detail"),
+    path('food/edit/<int:pk>', food_edit, name="food-edit"),
+    path('food/delete/<int:pk>', food_delete, name="food-delete"),
+    path('breast/', breast, name="breast"),
+    path('breast/<int:pk>', breast_detail, name="breast-detail"),
+    path('breast/edit/<int:pk>', breast_edit, name="breast-edit"),
+    path('breast/delete/<int:pk>', breast_delete, name="breast-delete"),
+    path('sleep/', sleep, name="sleep"),
+    path('sleep/<int:pk>', sleep_detail, name="sleep-detail"),
+    path('sleep/edit/<int:pk>', sleep_edit, name="sleep-edit"),
+    path('sleep/delete/<int:pk>', sleep_delete, name="sleep-delete"),
+    path('diaper/', diaper, name="diaper"),
+    path('diaper/<int:pk>', diaper_detail, name="diaper-detail"),
+    path('diaper/edit/<int:pk>', diaper_edit, name="diaper-edit"),
+    path('diaper/delete/<int:pk>', diaper_delete, name="diaper-delete"),
+    path('medicine/', medicine, name="medicine"),
+    path('medicine/<int:pk>', medicine_detail, name="medicine-detail"),
+    path('medicine/edit/<int:pk>', medicine_edit, name="medicine-edit"),
+    path('medicine/delete/<int:pk>', medicine_delete, name="medicine-delete"),
+    path('show-data/', show_data, name="show-data"),
+]

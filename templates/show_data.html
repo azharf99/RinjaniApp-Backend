@@ -1,0 +1,258 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+     <!-- Top Bar -->
+    <div class="container sticky-top bg-light" id="top">
+     <!-- Judul -->
+        <div class="container text-center p-1">
+            <h3>Lihat Data</h3>
+            <h4>Berdasarkan Tanggal</h4>
+        </div>
+
+        <!-- Tombol Filter Data -->
+        <div class="container  text-center mt-3 mb-3 align-items-center">
+        <form action="{% url 'show-data' %}" method="post">
+            {% csrf_token %}
+            <input type="date" name="data" value="{{ today }}">
+            <input class="bg-primary rounded-1 text-white" type="submit" value="Ambil Data">
+        </form>
+        </div>
+    </div>
+
+    <!-- Keterangan Tanggal -->
+    <div class="container text-center">
+        <h3>{{ poe }}</h3>
+    </div>
+
+    <!-- Tabel Data Umum -->
+    <div class="container justify-content-center table-responsive">
+        <table class="table table-bordered table-hover align-middle caption-top">
+            <caption>Data Umum</caption>
+            <thead class="table-dark">
+            <tr>
+                <th>Usia (bln)</th>
+                <th>BB (kg)</th>
+                <th>Perkembangan</th>
+            </tr>
+            </thead>
+        {% if data_g %}
+        {% for data in data_g %}
+            <tbody>
+            <tr>
+                <td>{{ data.usia }}</td>
+                <td>{{ data.berat_badan }}</td>
+                <td>{{ data.perkembangan }}</td>
+            </tr>
+        {% endfor %}
+            </tbody>
+
+        {% else %}
+            <tbody>
+            <tr>
+                <td colspan="3" class="text-center">Tidak ada data :(</td>
+            </tr>
+            </tbody>
+        {% endif %}
+        </table>
+    </div>
+
+    <!-- Tabel Data Food -->
+    <div class="container justify-content-center table-responsive">
+        <table class="table table-bordered table-hover align-middle caption-top">
+            <caption>Data Makan</caption>
+            <thead class="table-dark">
+            <tr>
+                <th>Makanan</th>
+                <th>Porsi (suap)</th>
+                <th>Catatan</th>
+            </tr>
+            </thead>
+        {% if data_f %}
+        {% for data in data_f %}
+            <tbody>
+            <tr>
+                <td>{{ data.makanan }}</td>
+                <td>{{ data.porsi_suapan }}</td>
+                <td>{{ data.catatan_makan }}</td>
+            </tr>
+        {% endfor %}
+            </tbody>
+
+        {% else %}
+            <tbody>
+            <tr>
+                <td colspan="3" class="text-center">Tidak ada data :(</td>
+            </tr>
+            </tbody>
+        {% endif %}
+        </table>
+    </div>
+
+    <!-- Tabel Data Menyusui -->
+    <div class="container justify-content-center table-responsive">
+        <table class="table table-bordered table-hover align-middle caption-top">
+            <caption>Data Menyusui</caption>
+            <thead class="table-dark">
+            <tr>
+                <th>Jam</th>
+                <th>Durasi (menit)</th>
+                <th>Catatan Nyusu</th>
+            </tr>
+            </thead>
+        {% if data_b %}
+        {% for data in data_b %}
+            <tbody>
+            <tr>
+                <td>{{ data.waktu|date:'H:i' }}</td>
+                <td>{{ data.durasi_nyusu }}</td>
+                <td>{{ data.catatan_nyusu }}</td>
+            </tr>
+        {% endfor %}
+            </tbody>
+
+        {% else %}
+            <tbody>
+            <tr>
+                <td colspan="3" class="text-center">Tidak ada data :(</td>
+            </tr>
+            </tbody>
+        {% endif %}
+        </table>
+    </div>
+
+    <!-- Tabel Data Tidur -->
+    <div class="container justify-content-center table-responsive">
+        <table class="table table-bordered table-hover align-middle caption-top">
+            <caption>Data Tidur</caption>
+            <thead class="table-dark">
+            <tr>
+                <th>Jam</th>
+                <th>Durasi (menit)</th>
+                <th>Catatan Tidur</th>
+            </tr>
+            </thead>
+        {% if data_s %}
+        {% for data in data_s %}
+            <tbody>
+            <tr>
+                <td>{{ data.waktu|date:'H:i' }}</td>
+                <td>{{ data.durasi_tidur }}</td>
+                <td>{{ data.catatan_tidur }}</td>
+            </tr>
+        {% endfor %}
+            </tbody>
+
+        {% else %}
+            <tbody>
+            <tr>
+                <td colspan="3" class="text-center">Tidak ada data :(</td>
+            </tr>
+            </tbody>
+        {% endif %}
+        </table>
+    </div>
+
+    <!-- Tabel Data Mandi -->
+    <div class="container justify-content-center table-responsive">
+        <table class="table table-bordered table-hover align-middle caption-top">
+            <caption>Data Mandi</caption>
+            <thead class="table-dark">
+            <tr>
+                <th>Jam</th>
+                <th>Mandi</th>
+                <th>Jenis Air</th>
+            </tr>
+            </thead>
+        {% if data_h %}
+        {% for data in data_h %}
+            <tbody>
+            <tr>
+                <td>{{ data.waktu|date:'H:i' }}</td>
+                <td>{{ data.mandi }}</td>
+                <td>{{ data.jenis_air }}</td>
+            </tr>
+        {% endfor %}
+            </tbody>
+
+        {% else %}
+            <tbody>
+            <tr>
+                <td colspan="3" class="text-center">Tidak ada data :(</td>
+            </tr>
+            </tbody>
+        {% endif %}
+        </table>
+    </div>
+
+    <!-- Tabel Data Diaper -->
+    <div class="container justify-content-center table-responsive">
+        <table class="table table-bordered table-hover align-middle caption-top">
+            <caption>Data Diaper</caption>
+            <thead class="table-dark">
+            <tr>
+                <th>Jam</th>
+                <th>Apakah Bab?</th>
+                <th>Catatan</th>
+            </tr>
+            </thead>
+        {% if data_d %}
+        {% for data in data_d %}
+            <tbody>
+            <tr>
+                <td>{{ data.waktu|date:'H:i' }}</td>
+                <td>{{ data.bab }}</td>
+                <td>{{ data.catatan_diaper }}</td>
+            </tr>
+        {% endfor %}
+            </tbody>
+
+        {% else %}
+            <tbody>
+            <tr>
+                <td colspan="3" class="text-center">Tidak ada data :(</td>
+            </tr>
+            </tbody>
+        {% endif %}
+        </table>
+    </div>
+
+    <!-- Tabel Data Obat -->
+    <div class="container justify-content-center table-responsive mb-5">
+        <table class="table table-bordered table-hover align-middle caption-top">
+            <caption>Data Kesehatan</caption>
+            <thead class="table-dark">
+            <tr>
+                <th>Jam</th>
+                <th>Nama Obat</th>
+                <th>Dosis</th>
+            </tr>
+            </thead>
+        {% if data_m %}
+        {% for data in data_m %}
+            <tbody>
+            <tr>
+                <td>{{ data.waktu|date:'H:i' }}</td>
+                <td>{{ data.nama_obat }}</td>
+                <td>{{ data.dosis }}</td>
+            </tr>
+        {% endfor %}
+            </tbody>
+
+        {% else %}
+            <tbody>
+            <tr>
+                <td colspan="3" class="text-center">Tidak ada data :(</td>
+            </tr>
+            </tbody>
+        {% endif %}
+        </table>
+    </div>
+
+    <div class="text-center mb-5 p-5">
+        <p>udah cukup scrollnya :)</p>
+    </div>
+
+    {% include 'nav-short.html' %}
+
+{% endblock %}

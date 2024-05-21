@@ -1,0 +1,41 @@
+
+
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container position-absolute top-50 start-50 translate-middle d-flex justify-content-center">
+    <div class="card mw-100">
+      <div class="card-header">
+         Detail Tidur Rinjani
+      </div>
+      <div class="card-body">
+        {% if detail %}
+        <div class="row">
+            <div class="col">Tanggal</div>
+            <div class="col">: {{ detail.tanggal|date:"j F Y" }}</div>
+        </div>
+        <div class="row">
+            <div class="col">Waktu</div>
+            <div class="col">: {{ detail.waktu|date:"H:i" }} WIB</div>
+        </div>
+        <div class="row">
+            <div class="col">Durasi Tidur</div>
+            <div class="col">: {{ detail.durasi_tidur }} menit</div>
+        </div>
+        <div class="row">
+            <div class="col">Catatan</div>
+            <div class="col">: {{ detail.catatan_tidur }}</div>
+        </div>
+
+        {% else %}
+        <p>Maaf, datanya gak ada :(</p>
+
+        {% endif %}
+        <div class="d-flex justify-content-between mt-3 mb-3">
+        <a href="{% url 'home' %}" class="btn btn-danger">Home <i class="bi bi-house"></i></a>
+        <a href="{% url 'sleep' %}" class="btn btn-primary">Back to Table</a>
+        </div>
+      </div>
+    </div>
+    </div>
+{% endblock %}

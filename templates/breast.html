@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class="container">
+        <a class="btn btn-warning m-3" href="{% url 'edit-data' %}">
+            <i class="bi bi-list"></i>
+            Menu
+        </a>
+    </div>
+
+    <!-- Tabel -->
+    <div class="container mb-5">
+
+    <p class="text-center">Data Menyusui Rinjani</p>
+
+    <table class="table table-hover table-responsive align-middle">
+        <thead class="table-dark">
+        <tr>
+            <th>Tanggal</th>
+            <th>Waktu</th>
+            <th>Durasi (menit)</th>
+            <th>Catatan Nyusu</th>
+            <th>Aksi</th>
+        </tr>
+        </thead>
+    {% if datas %}
+    {% for data in datas %}
+        <tbody>
+        <tr>
+            <td>{{ data.tanggal|date:'j M Y' }}</td>
+            <td>{{ data.waktu|date:'H:i' }}</td>
+            <td>{{ data.durasi_nyusu }}</td>
+            <td>{{ data.catatan_nyusu }}</td>
+            <td>
+                <a class="btn btn-primary btn-sm mb-1" href="{% url 'breast-detail' data.id %}">
+                    <i class="bi bi-search"></i>
+                </a>
+                <a class="btn btn-warning btn-sm mb-1" href="{% url 'breast-edit' data.id %}">
+                    <i class="bi bi-pencil-square"></i>
+                </a>
+                <a class="btn btn-danger btn-sm mb-1" href="{% url 'breast-delete' data.id %}">
+                    <i class="bi bi-trash"></i>
+                </a>
+            </td>
+    {% endfor %}
+        </tr>
+    {% endif %}
+        </tbody>
+    </table>
+    </div>
+
+    <div class="text-center mb-5 p-5">
+        <p>udah cukup scrollnya :)</p>
+    </div>
+    {% include 'nav-short.html' %}
+{% endblock %}

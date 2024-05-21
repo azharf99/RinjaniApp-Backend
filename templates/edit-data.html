@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+
+    <!-- Tombol Edit Data  -->
+    <div class="container text-center mt-5 py-3">
+        <h1 class="m-4">Data mana yang mau
+            <span class="text-warning fw-bold">
+                diedit
+            </span>  atau
+            <span class="text-danger fw-bold">
+                dihapus
+            </span> ?
+            <i class="bi bi-emoji-neutral"></i></h1>
+        <div class="d-flex flex-wrap justify-content=center">
+        <div class="m-2 d-inline-block shadow">
+            <a class="btn btn-warning" href="{% url 'general' %}">
+                <img src="{% static 'img/general.png' %}" alt="General" width="70px">
+                <p>Umum</p>
+            </a>
+        </div>
+        <div class="m-2 d-inline-block shadow">
+            <a class="btn btn-warning" href="{% url 'food' %}">
+                <img src="{% static 'img/food.png' %}" alt="" width="70px">
+                <p>Makanan</p>
+            </a>
+
+        </div>
+        <div class="m-2 d-inline-block shadow">
+            <a class="btn btn-warning" href="{% url 'breast' %}">
+                <img src="{% static 'img/breast.png' %}" alt="" width="70px">
+                <p>Menyusui</p>
+            </a>
+        </div>
+        <div class="m-2 d-inline-block shadow">
+            <a class="btn btn-warning" href="{% url 'sleep' %}">
+                <img src="{% static 'img/sleep.png' %}" alt="" width="70px">
+                <p>Tidur</p>
+            </a>
+        </div>
+        <div class="m-2 d-inline-block shadow">
+            <a class="btn btn-warning" href="{% url 'diaper' %}">
+                <img src="{% static 'img/diaper.png' %}" alt="" width="70px">
+                <p>Popok</p>
+            </a>
+        </div>
+        <div class="m-2 d-inline-block shadow">
+            <a class="btn btn-warning" href="{% url 'medicine' %}">
+                <img src="{% static 'img/medicine.png' %}" alt="" width="70px">
+                <p>Kesehatan</p>
+            </a>
+        </div>
+
+        </div>
+    </div>
+
+
+    {% include 'nav-long.html' %}
+
+{% endblock %}

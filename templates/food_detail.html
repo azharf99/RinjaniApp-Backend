@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container position-absolute top-50 start-50 translate-middle d-flex justify-content-center">
+    <div class="card mw-100">
+      <div class="card-header">
+        Data Makan Rinjani
+      </div>
+      <div class="card-body">
+        {% if detail %}
+        <div class="row">
+            <div class="col">Tanggal</div>
+            <div class="col">: {{ detail.tanggal|date:"j M Y" }}</div>
+        </div>
+        <div class="row">
+            <div class="col">Waktu</div>
+            <div class="col">: {{ detail.waktu|date:"H:i" }} WIB</div>
+        </div>
+        <div class="row">
+            <div class="col">Makanan</div>
+            <div class="col">: {{ detail.makanan }}</div>
+        </div>
+        <div class="row">
+            <div class="col">Porsi</div>
+            <div class="col">: {{ detail.porsi_suapan }} suap</div>
+        </div>
+        <div class="row">
+            <div class="col">Durasi makan</div>
+            <div class="col">: {{ detail.durasi_makan}} menit</div>
+        </div>
+        <div class="row">
+            <div class="col">Catatan makan</div>
+            <div class="col">: {{ detail.catatan_makan }}</div>
+        </div>
+
+        {% else %}
+        <p>Maaf, datanya gak ada :(</p>
+
+        {% endif %}
+        <div class="d-flex justify-content-between mt-3 mb-3">
+        <a href="{% url 'home' %}" class="btn btn-danger">Home <i class="bi bi-house"></i></a>
+        <a href="{% url 'food' %}" class="btn btn-primary">Back to Table</a>
+        </div>
+      </div>
+    </div>
+    </div>
+{% endblock %}

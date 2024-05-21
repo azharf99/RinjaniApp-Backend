@@ -1,0 +1,13 @@
+db.sqlite3
+/data
+/venv
+**/__pycache__
+**/migrations/__pycache__
+.env
+
+templates/rinjani-app/
+key.json
+cloud-sql-proxy.exe
+sqlite3.exe
+static/
+.gcloudignore
