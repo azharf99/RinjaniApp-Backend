@@ -130,6 +130,8 @@ WSGI_APPLICATION = "RinjaniApp.wsgi.application"
 DATABASES = {"default": env.db()}
 
 # If the flag as been set, configure to use proxy
+# To start DEVELOPMENT type on console : cloud-sql-proxy.exe rinjaniapp-423917:asia-southeast2:rinjani-app
+# DISABLE APPENGINE_URL IN .ENV FILE
 if os.getenv("USE_CLOUD_SQL_AUTH_PROXY", None):
     DATABASES["default"]["HOST"] = "127.0.0.1"
     DATABASES["default"]["PORT"] = 5432
@@ -195,7 +197,7 @@ STATICFILES_STORAGE = 'RinjaniApp.gcsUtils.Static'
 # Set "media" folder
 DEFAULT_FILE_STORAGE = 'RinjaniApp.gcsUtils.Media'
 
-GS_BUCKET_NAME = 'rinjani-static'
+GS_BUCKET_NAME = env("GS_BUCKET_NAME")
 
 MEDIA_URL = 'media/'
 STATIC_URL = 'static/'
@@ -213,3 +215,9 @@ GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
 #     "http://127.0.0.1:8080",
 #     "http://127.0.0.1:3000",
 # ]
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
